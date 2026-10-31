@@ -7,8 +7,8 @@ from sqlmodel import SQLModel, Field, Session, create_engine, select
 
 class MesureIn(SQLModel):
     """Ce que la balance envoie."""
-    scale_id: str
-    weight_kg: float
+    scale_id: str = Field(min_length=1)
+    weight_kg: float = Field(gt=20, lt=300)
 
 
 class Mesure(SQLModel, table=True):
